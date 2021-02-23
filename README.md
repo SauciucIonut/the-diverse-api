@@ -1,6 +1,6 @@
 # The Diverse API
 
-The Diverse API is a fun RESTful API written in Python, using FastAPI with many and diverse features.
+The Diverse API is a fun RESTful API written in Python, using Django, with many and diverse features.
 
 **Currently in development**
 
