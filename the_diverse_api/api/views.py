@@ -3,9 +3,11 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
 from .models import Cats
 from .serializers import CatsSerializer
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
+@csrf_exempt
 def cats_all(request):
     if request.method == 'GET':
         cats = Cats.objects.all()
