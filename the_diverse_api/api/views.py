@@ -5,18 +5,18 @@ from .serializers import CatsSerializer
 from rest_framework.decorators import api_view 
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import generics
 
 # Create your views here.
 
-@api_view(['GET'])
-def cats(request):
-    if request.method == 'GET':
-        # getting a random cat, serializing it then responding to
-        # the api call, might make it a one-liner in the future
-        cats = random.choice(list(Cats.objects.all()))
-        return Response(CatsSerializer(cats).data)
+class CatsLink(generics.ListCreateAPIView):
+    serializer_class = CatsSerializer
+    def get(self, request):
+        return Response(CatsSerializer(random.choice(list(Cats.objects.all())), many=False).data)
 
-    elif request.method == 'POST':
+    def post(self, request):
+        # don't accept any post requests for now
+        return Response({'error':'not accepting POSTs for now'}, status=status.HTTP_400_BAD_REQUEST)
         serializer = CatsSerializer(data=request.data)
 
         if serializer.is_valid():

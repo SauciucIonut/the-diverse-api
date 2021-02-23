@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import cats
+from .views import CatsLink
 
 urlpatterns = [
-    path('animals/cats/', cats),
+    path('animals/cats/', CatsLink.as_view()),
 ]
