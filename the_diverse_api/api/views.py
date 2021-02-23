@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
@@ -8,11 +9,12 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 @csrf_exempt
-def cats_all(request):
+def cats(request):
     if request.method == 'GET':
-        cats = Cats.objects.all()
-        serializer = CatsSerializer(cats, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        # getting a random cat, serializing it then responding to
+        # the api call, might make it a one-liner in the future
+        cats = random.choice(list(Cats.objects.all()))
+        return JsonResponse(CatsSerializer(cats).data, safe=False)
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
