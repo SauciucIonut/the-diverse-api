@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Cats
+from .models import CatImage
 
-class CatsSerializer(serializers.ModelSerializer):
+class CatImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cats
+        model = CatImage
         fields = ['id', 'link']
