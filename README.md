@@ -8,6 +8,7 @@ The Diverse API is a fun RESTful API written in Python, using Django, with many 
 ## Endpoints
 
 /api/animals/cats - retrieves a random url containing a cat image
+/api/animals/dogs - soon to come
 
 ### soon
 
