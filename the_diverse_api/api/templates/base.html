@@ -29,6 +29,14 @@
                             <a>
                                 <li class="text-white pt-8">
                                     <div class="flex items-center">
+                                        <div class="md:w-6 md:h-6 w-5 h-5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+                                                <path d="M7.16667 3H3.83333C3.3731 3 3 3.3731 3 3.83333V7.16667C3 7.6269 3.3731 8 3.83333 8H7.16667C7.6269 8 8 7.6269 8 7.16667V3.83333C8 3.3731 7.6269 3 7.16667 3Z" stroke="#667EEA" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7.16667 11.6667H3.83333C3.3731 11.6667 3 12.0398 3 12.5V15.8333C3 16.2936 3.3731 16.6667 3.83333 16.6667H7.16667C7.6269 16.6667 8 16.2936 8 15.8333V12.5C8 12.0398 7.6269 11.6667 7.16667 11.6667Z" stroke="#667EEA" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M16.1667 11.6667H12.8333C12.3731 11.6667 12 12.0398 12 12.5V15.8334C12 16.2936 12.3731 16.6667 12.8333 16.6667H16.1667C16.6269 16.6667 17 16.2936 17 15.8334V12.5C17 12.0398 16.6269 11.6667 16.1667 11.6667Z" stroke="#667EEA" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M16.1667 3H12.8333C12.3731 3 12 3.3731 12 3.83333V7.16667C12 7.6269 12.3731 8 12.8333 8H16.1667C16.6269 8 17 7.6269 17 7.16667V3.83333C17 3.3731 16.6269 3 16.1667 3Z" stroke="#667EEA" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
                                         <p class="text-indigo-500 ml-3 text-lg md:text-2xl">Home</p>
                                     </div>
                                 </li>
@@ -50,26 +58,6 @@
                                             </div>
                                             <p class="text-white ml-3 text-lg md:text-2xl">Documentation</p>
                                         </div>
-                                        <div id="chevronup" onclick="listHandler(true)" class="ml-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="14" height="14" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <polyline points="6 9 12 15 18 9" />
-                                            </svg>
-                                        </div>
-                                        <div id="chevrondown" onclick="listHandler(false)" class="hidden ml-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="14" height="14" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <polyline points="6 15 12 9 18 15" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div id="list" class="hidden">
-                                        <ul class="my-3">
-                                            <li class="text-sm text-indigo-500 py-2 px-6">Best Sellers</li>
-                                            <li class="text-sm text-white hover:text-indigo-500 py-2 px-6">Out of Stock</li>
-                                            <li class="text-sm text-white hover:text-indigo-500 py-2 px-6">New Documentation</li>
-                                        </ul>
-                                    </div>
                                 </li>
                             </a>
                             <a>
@@ -98,20 +86,6 @@
                                             </div>
                                             <p class="text-white ml-3 text-lg md:text-2xl">Discord</p>
                                         </div>
-                                        <div>
-                                            <div id="chevronup2" onclick="listHandler2(true)" class="ml-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="14" height="14" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <polyline points="6 9 12 15 18 9" />
-                                                </svg>
-                                            </div>
-                                            <div id="chevrondown2" onclick="listHandler2(false)" class="hidden ml-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="14" height="14" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <polyline points="6 15 12 9 18 15" />
-                                                </svg>
-                                            </div>
-                                        </div>
                                     </div>
                                 </li>
                             </a>
@@ -121,6 +95,7 @@
                         <div class="border-t border-gray-700">
                             <div class="w-full flex items-center justify-between px-6 pt-1">
                                 <div class="flex items-center">
+                                    <!-- TODO: MAKE LOGIN BUTTON HERE, MOBILE VERSION-->
                                     <img alt="profile-pic" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" class="w-8 h-8 rounded-md" />
                                     <p class="md:text-xl text-white text-base leading-4 ml-2">Jane Doe</p>
                                 </div>
@@ -152,43 +127,9 @@
                     <li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white tracking-normal hidden">Discord</li>
                 </ul>
                 <div aria-haspopup="true" class="cursor-pointer h-full xl:flex items-center justify-end hidden relative" onclick="dropdownHandler(this)">
-                    <ul class="p-2 w-40 border-r bg-white absolute rounded z-40 right-0 shadow mt-64 hidden">
-                        <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" />
-                                    <circle cx="12" cy="7" r="4" />
-                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                </svg>
-                                <span class="ml-2">My Profile</span>
-                            </div>
-                        </li>
-                        <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" />
-                                <circle cx="12" cy="12" r="9" />
-                                <line x1="12" y1="17" x2="12" y2="17.01" />
-                                <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
-                            </svg>
-                            <span class="ml-2">Help Center</span>
-                        </li>
-                        <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" />
-                                <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                <circle cx="12" cy="12" r="3" />
-                            </svg>
-                            <span class="ml-2">Account Settings</span>
-                        </li>
-                    </ul>
                     <div class="rounded">
+                        <!-- TODO: MAKE LOGIN BUTTON HERE-->
                         <img class="rounded h-10 w-10 object-cover" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" alt="logo" />
-                    </div>
-                    <div class="text-gray-600 ml-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
                     </div>
                 </div>
                 <div class="visible xl:hidden flex items-center">
