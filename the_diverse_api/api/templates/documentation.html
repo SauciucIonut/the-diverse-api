@@ -1,0 +1,135 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="{% static 'api/javascript.js' %}"></script>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Documentation</title>
+        {% endif %}
+        {% block head %}{% endblock %}
+    </head>
+    <body class="bg-gray-800">
+        <div class="flex h-full">
+            <!-- Sidebar starts -->
+            <div class="w-64 bg-gray-800 shadow h-screen flex-col justify-between hidden lg:flex pb-12">
+                <div>
+                    <div class="w-full flex items-center">
+                        <img src="{% static 'api/logo.png' %}" class="mx-auto" alt="logo" width="100">
+                    </div>
+                    <ul>
+                        <p class="flex w-full justify-between text-white text-xl px-2">WELCOME</p>
+                        <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
+                            <div class="flex items-center">
+                                <span class="text-base ml-2 px-8">Introduction</span>
+                            </div>
+                        </li>
+                        <p class="flex w-full justify-between text-white text-xl px-2">ENDPOINTS</p>
+                        <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
+                            <div class="flex items-center">
+                                <span class="text-base ml-2 px-8">Animals</span>
+                            </div>
+                        </li>
+                        <p class="flex w-full justify-between text-white text-xl px-2">EXAMPLES</p>
+                        <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
+                            <div class="flex items-center">
+                                <span class="text-base ml-2 px-8">Python</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--Mobile responsive sidebar-->
+            <div class="absolute z-40 w-full h-full lg:hidden transform -translate-x-full" id="mobile-nav">
+                <div class="bg-gray-800 opacity-60 w-full h-full absolute" onclick="sidebarHandler(false)"></div>
+                <div class="w-64 md:w-96 z-20 absolute bg-gray-800 shadow h-full flex-col justify-between pb4 transition duration-150 ease-in-out">
+                    <div class="h-full w-full flex flex-col justify-between">
+                        <div>
+                            <div class="text-white flex items-center justify-between">
+                                <div class="w-full flex items-center">
+                                    <img src="{% static 'api/logo.png' %}" class="mx-auto" alt="logo" width="100">
+                                </div>
+                                <div onclick="sidebarHandler(false)">
+                                    <svg id="cross" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <p class="flex w-full justify-between text-white text-xl px-2">WELCOME</p>
+                                    <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
+                                        <div class="flex items-center">
+                                            <span class="text-base ml-2 px-8">Introduction</span>
+                                        </div>
+                                    </li>
+                                    <p class="flex w-full justify-between text-white text-xl px-2">ENDPOINTS</p>
+                                    <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
+                                        <div class="flex items-center">
+                                            <span class="text-base ml-2 px-8">Animals</span>
+                                        </div>
+                                    </li>
+                                    <p class="flex w-full justify-between text-white text-xl px-2">EXAMPLES</p>
+                                    <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
+                                        <div class="flex items-center">
+                                            <span class="text-base ml-2 px-8">Python</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar ends -->
+            <div class="w-full h-full">
+                <!-- Navigation starts -->
+                <nav class="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-indigo shadow relative z-10">
+                    <div class="text-white mr-8 visible lg:hidden relative" onclick="sidebarHandler(true)" id="menu">
+                        <svg aria-label="Main Menu" aria-haspopup="true" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu cursor-pointer" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <line x1="4" y1="8" x2="20" y2="8" />
+                            <line x1="4" y1="16" x2="20" y2="16" />
+                        </svg>
+                    </div>
+                </nav>
+                <!-- Navigation ends -->
+                <!-- Remove class [ h-64 ] when adding a card block -->
+                <div class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
+                    <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
+                    <div class="w-full h-full rounded border-dashed border-2 border-gray-300">
+                        <!-- Place your content here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+         {% block body %}{% endblock %}
+         <script>
+             let sideBar = document.getElementById("mobile-nav");
+            let menu = document.getElementById("menu");
+            let cross = document.getElementById("cross");
+            const sidebarHandler = (check) => {
+                if (check) {
+                    sideBar.style.transform = "translateX(0px)";
+                    menu.classList.add("hidden");
+                    cross.classList.remove("hidden");
+                } else {
+                    sideBar.style.transform = "translateX(-100%)";
+                    menu.classList.remove("hidden");
+                    cross.classList.add("hidden");
+                }
+            };
+            function dropdownHandler(element) {
+                let single = element.getElementsByTagName("ul")[0];
+                single.classList.toggle("hidden");
+            }
+         </script>
+    </body>
+</html>
+        
