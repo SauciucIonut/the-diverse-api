@@ -12,6 +12,9 @@ from rest_framework import generics
 def home(request):
     return render(request, 'home.html')
 
+def endpoints(request):
+    return render(request, 'endpoints.html')
+
 class CatImagesLink(generics.ListCreateAPIView):
     serializer_class = CatImageSerializer
     def get(self, request):
