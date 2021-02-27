@@ -1,12 +1,22 @@
 {% load static %}
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="{% static 'api/javascript.js' %}"></script>
+        <!--<script src="{% static 'api/javascript.js' %}"></script> -->
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="{% static 'api/favicon.ico' %}"/>
+        <meta name="description" content="The Diverse API is a REST API written in Python using Django with many fun features." />
+        <meta name="keywords" content="API,Discord,Diverse,Animals,Images,REST API,Fun,Free" />
+        <meta name="theme-color" content="#312E81">
+        <meta property="og:title" content="The Diverse API" />
+        <meta property="og:description" content="The Diverse API is a REST API written in Python using Django with many fun features." />
+        <!-- <meta property="og:url" content="todo" /> -->
+        <meta property="og:image" content="{% static 'api/favicon.ico' %}" />
+        <meta property="og:image:width" content="64" />
+        <meta property="og:image:height" content="64" />
+
         {% if title %}
         <title>{{ title }}</title>
         {% else %}
