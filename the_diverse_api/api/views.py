@@ -15,8 +15,11 @@ def home(request):
 def endpoints(request):
     return render(request, 'endpoints.html')
 
-def doocumentation(request):
+def documentation(request):
     return render(request, 'documentation.html')
+
+def login(request):
+    return render(request, 'login.html')
 
 class CatImagesLink(generics.ListCreateAPIView):
     serializer_class = CatImageSerializer
