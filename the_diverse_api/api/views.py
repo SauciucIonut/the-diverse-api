@@ -21,6 +21,9 @@ def documentation(request):
 def login(request):
     return render(request, 'login.html')
 
+def register(request):
+    return render(request, 'register.html')
+
 class CatImagesLink(generics.ListCreateAPIView):
     serializer_class = CatImageSerializer
     def get(self, request):
