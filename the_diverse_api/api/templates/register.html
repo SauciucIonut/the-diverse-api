@@ -5,9 +5,8 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <title>TDA Register</title>
     </head>
-    <body>
-
-        <section class="bg-gray-800 h-screen">
+    <body class='bg-gray-800 h-full'>
+        <section>
             <div class="mx-auto flex justify-center lg:items-center h-full">
                 <form method="POST" action="" id="login" class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
                     {% csrf_token %}
@@ -40,20 +39,14 @@
                         <a class="text-xs" href="javascript: void(0)">Forgot Password?</a>
                     </div>
                     -->
-                    <!-- for errors
-                    <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500">
-                        <span class="text-xl inline-block mr-5 align-middle">
-                          <i class="fas fa-bell" />
-                        </span>
-                        <span class="inline-block align-middle mr-8">
-                          <b class="capitalize">Error!</b> This is a red alert - check it out!
-                        </span>
-                        <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
-                          <span>×</span>
-                        </button>
-                    </div>
-                    -->
-                    {{form.errors}}
+                    {% if form.errors %}
+                        {% for error, msg in form.errors.items %}
+                            <br><div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <strong class="font-bold">Error!</strong>
+                                <span class="block sm:inline">{{msg}}</span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                     <div class="px-2 sm:px-6">
                         <button class="focus:outline-none w-full bg-white transition duration-150 ease-in-out hover:bg-gray-200 rounded text-indigo-600 px-8 py-3 text-sm mt-6" type="submit">Register</button>
                         <p class="mt-16 text-xs text-center">Already have an account? <a class="underline" href="{% url 'login' %}">Login</a></p>

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CatImagesLink, DogImagesLink, home, endpoints, documentation, login, register
+from .views import CatImagesLink, DogImagesLink, home, endpoints, documentation, loginpage, register
 
 urlpatterns = [
     path('api/animals/cats/', CatImagesLink.as_view(), name="api-animals-cats"),
@@ -7,6 +7,6 @@ urlpatterns = [
     path('', home, name="index"),
     path('endpoints/', endpoints, name="endpoints"),
     path('documentation/', documentation, name="documentation"),
-    path('login/', login, name="login"),
+    path('login/', loginpage, name="login"),
     path('register/', register, name="register"),
 ]

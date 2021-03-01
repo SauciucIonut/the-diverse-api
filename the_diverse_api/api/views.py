@@ -22,7 +22,17 @@ def endpoints(request):
 def documentation(request):
     return render(request, 'documentation.html')
 
-def login(request):
+def loginpage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            messages.info(request, 'Incorrect credentials.')
+            return render(request, 'login.html')
     context = {}
     return render(request, 'login.html', context)
 

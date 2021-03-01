@@ -5,11 +5,10 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <title>TDA Login</title>
     </head>
-    <body>
-
-        <section class="bg-gray-800 h-screen">
+    <body class="bg-gray-800 h-full">
+        <section>
             <div class="mx-auto flex justify-center lg:items-center h-full">
-                <form id="login" class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
+                <form method="POST" id="login" class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
                     {% csrf_token %}
                     <div class="pt-0 px-2 flex flex-col items-center justify-center">
                         <img src="{% static 'api/logo.png' %}" alt="logo">
@@ -19,20 +18,18 @@
                         <h3 class="text-2xl sm:text-3xl xl:text-2xl font-bold leading-tight">Login To Your Account</h3>
                     </div>
                     <div class="mt-12 w-full px-2 sm:px-6">
-                        {% for field in form %}
                         <div class="flex flex-col mt-5">
-                        <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">{{ field.label }}</label>
-                            {% if field.name == 'password1' or field.name == 'password2' %}
-                            <input type="password" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}"> 
-                            <!-- <p class="help-text">{{ field.help_text }} </p> -->
-                            {% else %}
-                            <input type="text" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}" >
-                            {% endif %}
+                            <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">Username</label>
+                            <input type="text" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="username">
                         </div>
-                        {% endfor %}
+                        <div class="flex flex-col mt-5">
+                            <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">Password?</label>
+                            <input type="password" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="password">
+                        </div>
                     </div>
                     {% for message in messages %}
-                        <div class="bg-white rounded-lg border-gray-300 border p-3 shadow-lg">
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <br><div class="bg-white rounded-lg border-gray-300 border p-3 shadow-lg px-2 sm:px-6">
                             <div class="flex flex-row">
                             <div class="px-2">
                                 <svg width="24" height="24" viewBox="0 0 1792 1792" fill="#44C997" xmlns="http://www.w3.org/2000/svg">
@@ -45,6 +42,12 @@
                             </div>
                             </div>
                         </div>
+                    {% else %}
+                    <br><div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <strong class="font-bold">Error!</strong>
+                        <span class="block sm:inline">{{message}}</span>
+                      </div>
+                    {% endif %}
                     {% endfor %}
                     <!-- to add if needed
                     <div class="pt-6 w-full flex justify-between px-2 sm:px-6">
