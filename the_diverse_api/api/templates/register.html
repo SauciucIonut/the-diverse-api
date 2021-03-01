@@ -23,10 +23,10 @@
                         <div class="flex flex-col mt-5">
                         <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">{{ field.label }}</label>
                             {% if field.name == 'password1' or field.name == 'password2' %}
-                            <input type="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}" value="{{ field.value }}" > 
+                            <input type="password" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}"> 
                             <!-- <p class="help-text">{{ field.help_text }} </p> -->
                             {% else %}
-                            <input type="text" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}" value="{{ field.value }}" >
+                            <input type="text" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}" >
                             {% endif %}
                         </div>
                         {% endfor %}
