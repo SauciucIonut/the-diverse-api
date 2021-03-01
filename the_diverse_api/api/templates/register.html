@@ -19,26 +19,17 @@
                         <h3 class="text-2xl sm:text-3xl xl:text-2xl font-bold leading-tight">Sign Up</h3>
                     </div>
                     <div class="mt-12 w-full px-2 sm:px-6">
+                        {% for field in form %}
                         <div class="flex flex-col mt-5">
-                            <label for="username" class="text-lg font-semibold leading-tight">Username</label>
-                            {{form.username}}
-                            <!-- <input required id="username" name="username" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="username" value="{{ username }}"> -->
+                        <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">{{ field.label }}</label>
+                            {% if field.name == 'password1' or field.name == 'password2' %}
+                            <input type="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}" value="{{ field.value }}" > 
+                            <!-- <p class="help-text">{{ field.help_text }} </p> -->
+                            {% else %}
+                            <input type="text" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}" value="{{ field.value }}" >
+                            {% endif %}
                         </div>
-                        <div class="flex flex-col mt-5">
-                            <label for="email" class="text-lg font-semibold leading-tight">Email</label>
-                            {{form.email}}
-                            <!-- <input required id="email" name="email" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="email" value="{{ email }}"> -->
-                        </div>
-                        <div class="flex flex-col mt-5">
-                            <label for="password" class="text-lg font-semibold fleading-tight">Password</label>
-                            {{form.password1}}
-                            <!-- <input required id="password" name="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="password" value="{{ password1 }}"> -->
-                        </div>
-                        <div class="flex flex-col mt-5">
-                            <label for="password" class="text-lg font-semibold fleading-tight">Re-enter Password</label>
-                            {{form.password2}}
-                            <!-- <input required id="password" name="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="password" value="{{ password2 }}"> -->
-                        </div>
+                        {% endfor %}
                     </div>
                     <!-- to add if needed
                     <div class="pt-6 w-full flex justify-between px-2 sm:px-6">
