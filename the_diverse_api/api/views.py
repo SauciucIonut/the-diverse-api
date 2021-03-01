@@ -1,5 +1,5 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import CatImage, DogImage
 from .serializers import CatImageSerializer, DogImageSerializer
 from rest_framework.decorators import api_view 
@@ -8,6 +8,8 @@ from rest_framework import status
 from rest_framework import generics
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -31,6 +33,8 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Account was created succesfully.')
+            return redirect('login')
 
     context = {'form':form}
     return render(request, 'register.html', context)

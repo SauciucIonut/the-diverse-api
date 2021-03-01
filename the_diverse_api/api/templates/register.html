@@ -40,6 +40,20 @@
                         <a class="text-xs" href="javascript: void(0)">Forgot Password?</a>
                     </div>
                     -->
+                    <!-- for errors
+                    <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500">
+                        <span class="text-xl inline-block mr-5 align-middle">
+                          <i class="fas fa-bell" />
+                        </span>
+                        <span class="inline-block align-middle mr-8">
+                          <b class="capitalize">Error!</b> This is a red alert - check it out!
+                        </span>
+                        <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
+                          <span>×</span>
+                        </button>
+                    </div>
+                    -->
+                    {{form.errors}}
                     <div class="px-2 sm:px-6">
                         <button class="focus:outline-none w-full bg-white transition duration-150 ease-in-out hover:bg-gray-200 rounded text-indigo-600 px-8 py-3 text-sm mt-6" type="submit">Register</button>
                         <p class="mt-16 text-xs text-center">Already have an account? <a class="underline" href="{% url 'login' %}">Login</a></p>
