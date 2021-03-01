@@ -103,7 +103,27 @@
                 <div aria-haspopup="true" class="cursor-pointer h-full xl:flex items-center justify-end hidden relative" onclick="dropdownHandler(this)">
                     <div class="rounded">
                         <!-- TODO: MAKE LOGIN BUTTON HERE-->
-                        <img class="rounded h-10 w-10 object-cover" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" alt="logo" />
+                        {% if user.is_authenticated %}
+                        <div class="absolute top-3 inline-block text-left">
+                            <div>
+                                <p class="inline-flex justify-center w-full shadow-sm px-4 py-2 text-sm font-medium text-white hover:text-indigo" id="options-menu" aria-haspopup="true" aria-expanded="true" onclick="userDropdownHandler(this)">{{request.user}}
+                                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </p>
+                            </div>
+                            <div class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" id="usernamedropdown">
+                                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Token</a>
+                                  <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Logout</a>
+                                </div>
+                              </div>
+                        </div>
+                        {% else %}
+                         <div class="absolute top-1 inline-block mr-2 mt-2">
+                            <a href="{% url 'login' %}"><button type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md border border-purple-500 hover:bg-gray-700">Login</button>
+                         </div></a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="visible xl:hidden flex items-center">
@@ -143,6 +163,11 @@
             function dropdownHandler(element) {
                 let single = element.getElementsByTagName("ul")[0];
                 single.classList.toggle("hidden");
+            }
+
+            function userDropdownHandler(element) {
+                let dropdownuser = document.getElementById('usernamedropdown')
+                dropdownuser.classList.toggle("hidden");
             }
 
             function MenuHandler(el, val) {
