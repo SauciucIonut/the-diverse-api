@@ -37,14 +37,14 @@
                         <div class="flex items-center justify-end">
                         </div>
                         <ul class="f-m-m">
-                            <a>
+                            <a href="{% url 'index' %}">
                                 <li class="text-white pt-8">
                                     <div class="flex items-center">
                                         <p class="text-indigo-500 ml-3 text-lg md:text-2xl">Home</p>
                                     </div>
                                 </li>
                             </a>
-                            <a href="/documentation">
+                            <a href="{% url 'documentation' %}">
                                 <li class="text-white pt-8">
                                     <div class="flex items-center">
                                         <div class="flex items-center">
@@ -52,7 +52,7 @@
                                         </div>
                                 </li>
                             </a>
-                            <a href="/endpoints/">
+                            <a href="{% url 'endpoints' %}">
                                 <li class="text-white pt-8">
                                     <div class="flex items-center">
                                         <p class="text-white ml-3 text-lg md:text-2xl">Endpoints</p>
@@ -90,14 +90,14 @@
                 <div class="flex items-center">
                 </div>
                 <ul class="flex items-center justify-center h-full">
-                    <a href="/"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white ml-0 xl:ml-10 tracking-normal hidden">Home</li></a>
-                    <a href="/documentation"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white ml-0 xl:ml-10 tracking-normal hidden">Documentation</li></a>
-                    <a href="/"><li class="mx-0 xl:mx-12 cursor-pointer">
+                    <a href="{% url 'index' %}"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white ml-0 xl:ml-10 tracking-normal hidden">Home</li></a>
+                    <a href="{% url 'documentation' %}"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white ml-0 xl:ml-10 tracking-normal hidden">Documentation</li></a>
+                    <a href="{% url 'index' %}"><li class="mx-0 xl:mx-12 cursor-pointer">
                         <svg aria-label="Home" id="logo" enable-background="new 0 0 300 300" height="0" viewBox="0 0 300 300" width="43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <img src="{% static 'api/logo.png' %}" alt="logo" width="43">
                         </svg>
                     </li></a>
-                    <a href="/endpoints/"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white mr-10 tracking-normal hidden">Endpoints</li></a>
+                    <a href="{% url 'endpoints' %}"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white mr-10 tracking-normal hidden">Endpoints</li></a>
                     <a href="https://discord.gg/f3MtWDHe2P"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white tracking-normal hidden">Discord</li></a>
                 </ul>
                 <div aria-haspopup="true" class="cursor-pointer h-full xl:flex items-center justify-end hidden relative" onclick="dropdownHandler(this)">

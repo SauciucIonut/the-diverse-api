@@ -10,6 +10,7 @@
         <section class="bg-gray-800 h-screen">
             <div class="mx-auto flex justify-center lg:items-center h-full">
                 <form id="login" class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
+                    {% csrf_token %}
                     <div class="pt-0 px-2 flex flex-col items-center justify-center">
                         <img src="{% static 'api/logo.png' %}" alt="logo">
                         <h2 class="text-4xl leading-tight pt-8">The Diverse API</h2>
@@ -18,14 +19,17 @@
                         <h3 class="text-2xl sm:text-3xl xl:text-2xl font-bold leading-tight">Login To Your Account</h3>
                     </div>
                     <div class="mt-12 w-full px-2 sm:px-6">
+                        {% for field in form %}
                         <div class="flex flex-col mt-5">
-                            <label for="email" class="text-lg font-semibold leading-tight">Email</label>
-                            <input required id="email" name="email" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="email" />
+                        <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">{{ field.label }}</label>
+                            {% if field.name == 'password1' or field.name == 'password2' %}
+                            <input type="password" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}"> 
+                            <!-- <p class="help-text">{{ field.help_text }} </p> -->
+                            {% else %}
+                            <input type="text" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="{{ field.name }}" id="id_{{ field.name }}" >
+                            {% endif %}
                         </div>
-                        <div class="flex flex-col mt-5">
-                            <label for="password" class="text-lg font-semibold fleading-tight">Password</label>
-                            <input required id="password" name="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="password" />
-                        </div>
+                        {% endfor %}
                     </div>
                     <!-- to add if needed
                     <div class="pt-6 w-full flex justify-between px-2 sm:px-6">
@@ -38,12 +42,10 @@
                     -->
                     <div class="px-2 sm:px-6">
                         <button class="focus:outline-none w-full bg-white transition duration-150 ease-in-out hover:bg-gray-200 rounded text-indigo-600 px-8 py-3 text-sm mt-6">Login</button>
-                        <p class="mt-16 text-xs text-center">Don’t have an account? <a class="underline" href="/register/">Sign Up</a></p>
+                        <p class="mt-16 text-xs text-center">Don’t have an account? <a class="underline" href="{% url 'register' %}">Sign Up</a></p>
                     </div>
                 </form>
             </div>
-          
         </section>
-    
     </body>
 </html>
