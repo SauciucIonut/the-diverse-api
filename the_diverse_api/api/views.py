@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 
 # Create your views here.
 
@@ -19,10 +21,19 @@ def documentation(request):
     return render(request, 'documentation.html')
 
 def login(request):
-    return render(request, 'login.html')
+    context = {}
+    return render(request, 'login.html', context)
 
 def register(request):
-    return render(request, 'register.html')
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form':form}
+    return render(request, 'register.html', context)
 
 class CatImagesLink(generics.ListCreateAPIView):
     serializer_class = CatImageSerializer

@@ -3,13 +3,14 @@
 <html>
     <head>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <title>TDA Login</title>
+        <title>TDA Register</title>
     </head>
     <body>
 
         <section class="bg-gray-800 h-screen">
             <div class="mx-auto flex justify-center lg:items-center h-full">
-                <form id="login" class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
+                <form method="POST" action="" id="login" class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
+                    {% csrf_token %}
                     <div class="pt-0 px-2 flex flex-col items-center justify-center">
                         <img src="{% static 'api/logo.png' %}" alt="logo">
                         <h2 class="text-4xl leading-tight pt-8">The Diverse API</h2>
@@ -20,19 +21,23 @@
                     <div class="mt-12 w-full px-2 sm:px-6">
                         <div class="flex flex-col mt-5">
                             <label for="username" class="text-lg font-semibold leading-tight">Username</label>
-                            <input required id="email" name="email" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="email" />
+                            {{form.username}}
+                            <!-- <input required id="username" name="username" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="username" value="{{ username }}"> -->
                         </div>
                         <div class="flex flex-col mt-5">
                             <label for="email" class="text-lg font-semibold leading-tight">Email</label>
-                            <input required id="email" name="email" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="email" />
+                            {{form.email}}
+                            <!-- <input required id="email" name="email" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="email" value="{{ email }}"> -->
                         </div>
                         <div class="flex flex-col mt-5">
                             <label for="password" class="text-lg font-semibold fleading-tight">Password</label>
-                            <input required id="password" name="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="password" />
+                            {{form.password1}}
+                            <!-- <input required id="password" name="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="password" value="{{ password1 }}"> -->
                         </div>
                         <div class="flex flex-col mt-5">
                             <label for="password" class="text-lg font-semibold fleading-tight">Re-enter Password</label>
-                            <input required id="password" name="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="password" />
+                            {{form.password2}}
+                            <!-- <input required id="password" name="password" class="h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" type="password" value="{{ password2 }}"> -->
                         </div>
                     </div>
                     <!-- to add if needed
@@ -45,13 +50,12 @@
                     </div>
                     -->
                     <div class="px-2 sm:px-6">
-                        <button class="focus:outline-none w-full bg-white transition duration-150 ease-in-out hover:bg-gray-200 rounded text-indigo-600 px-8 py-3 text-sm mt-6">Register</button>
+                        <button class="focus:outline-none w-full bg-white transition duration-150 ease-in-out hover:bg-gray-200 rounded text-indigo-600 px-8 py-3 text-sm mt-6" type="submit">Register</button>
                         <p class="mt-16 text-xs text-center">Already have an account? <a class="underline" href="/login/">Login</a></p>
                     </div>
                 </form>
             </div>
           
         </section>
-    
     </body>
 </html>
