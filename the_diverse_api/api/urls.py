@@ -1,13 +1,18 @@
 from django.urls import path
-from .views import CatImagesLink, DogImagesLink, home, endpoints, documentation, loginpage, register, logoutUser
+from . import views
 
 urlpatterns = [
-    path('api/animals/cats/', CatImagesLink.as_view(), name="api-animals-cats"),
-    path('api/animals/dogs/', DogImagesLink.as_view(), name="api-animals-dogs"),
-    path('', home, name="index"),
-    path('endpoints/', endpoints, name="endpoints"),
-    path('documentation/', documentation, name="documentation"),
-    path('login/', loginpage, name="login"),
-    path('logout/', logoutUser, name="logout"),
-    path('register/', register, name="register"),
+    # API endpoints
+    path('api/animals/cats/', views.CatImagesLink.as_view(), name="api-animals-cats"),
+    path('api/animals/dogs/', views.DogImagesLink.as_view(), name="api-animals-dogs"),
+    
+    # front-end 
+    path('', views.home, name="index"),
+    path('endpoints/', views.endpoints, name="endpoints"),
+    path('documentation/', views.documentation, name="documentation"),
+
+    # user registration, login and logout
+    path('login/', views.loginpage, name="login"),
+    path('logout/', views.logoutUser, name="logout"),
+    path('register/', views.register, name="register"),
 ]

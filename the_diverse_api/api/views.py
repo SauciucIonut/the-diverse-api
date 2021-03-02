@@ -10,8 +10,11 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+# FRONT-END -------------------------------------------------------------------------------
 
 def home(request):
     return render(request, 'home.html')
@@ -21,6 +24,8 @@ def endpoints(request):
 
 def documentation(request):
     return render(request, 'documentation.html')
+
+# USER LOGIN LOGOUT REGISTER ---------------------------------------------------------------
 
 def loginpage(request):
     if request.method == 'POST':
@@ -52,6 +57,8 @@ def register(request):
 
     context = {'form':form}
     return render(request, 'register.html', context)
+
+# API ENDPOINTS ----------------------------------------------------------------------------
 
 class CatImagesLink(generics.ListCreateAPIView):
     serializer_class = CatImageSerializer
