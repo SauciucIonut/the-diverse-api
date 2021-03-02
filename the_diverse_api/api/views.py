@@ -47,6 +47,8 @@ class DogImagesLink(generics.ListCreateAPIView):
 # USER LOGIN LOGOUT REGISTER ---------------------------------------------------------------
 
 def loginpage(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -66,7 +68,8 @@ def logoutUser(request):
 
 def register(request):
     form = CreateUserForm()
-
+    if request.user.is_authenticated:
+        return redirect('index')
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
