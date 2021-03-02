@@ -13,6 +13,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authtoken.models import Token
 
 # API ENDPOINTS ----------------------------------------------------------------------------
 
@@ -94,3 +95,8 @@ def endpoints(request):
 
 def documentation(request):
     return render(request, 'documentation.html')
+
+def tokenpage(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    return render(request, 'token.html', {'token': Token.objects.get(user=request.user).key, 'title':'TDA Token'})

@@ -24,12 +24,12 @@
         {% endif %}
         {% block head %}{% endblock %}
     </head>
-    <body class="bg-gray-800 select-none">
+    <body class="bg-gray-800">
         <!-- Front-end made with Tailwind CSS-->
         <!-- I am in no way a front-end developer so I just copied this navbar from here: https://app.tailwinduikit.com/listing/webapp/master_layout/boxed_layout-->
         <!-- Navigation starts -->
         <!-- Mobile -->
-        <div id="mobile-nav" class="w-full h-full absolute z-40 ">
+        <div id="mobile-nav" class="w-full h-full absolute z-40 select-none">
             <div class="bg-gray-800 opacity-50 inset-0 fixed w-full h-full" onclick="sidebarHandler(false)"></div>
             <div class="md:w-96 w-64 z-20 absolute left-0 z-40 top-0 bg-gray-800 shadow flex-col justify-between transition duration-150 ease-in-out h-full">
                 <div class="flex flex-col justify-between h-full">
@@ -85,7 +85,7 @@
             </div>
         </div>
         <!-- Desktop -->
-        <nav class="w-full mx-auto bg-gray-800 border-b border-gray-700 shadow relative z-20">
+        <nav class="w-full mx-auto bg-gray-800 border-b border-gray-700 shadow relative z-20 select-none">
             <div class="container px-6 h-16 flex items-center justify-between mx-auto">
                 <div class="flex items-center">
                 </div>
@@ -114,7 +114,7 @@
                             </div>
                             <div class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" id="usernamedropdown">
                                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Token</a>
+                                  <a href="{% url 'tokenpage' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Token</a>
                                   <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Logout</a>
                                 </div>
                               </div>
@@ -144,7 +144,7 @@
         {% block body %}{% endblock %}
 
         <!-- tailblocks.cc -->
-        <footer class="text-gray-600 body-font">
+        <footer class="text-gray-600 body-font select-none">
             <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                     <img src="{% static 'api/logo.png' %}" alt="logo" width="43">

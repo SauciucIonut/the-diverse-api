@@ -11,6 +11,9 @@ urlpatterns = [
     path('endpoints/', views.endpoints, name="endpoints"),
     path('documentation/', views.documentation, name="documentation"),
 
+    # page to see the token
+    path('token/', views.tokenpage, name="tokenpage"),
+
     # user registration, login and logout
     path('login/', views.loginpage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
