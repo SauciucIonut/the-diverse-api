@@ -68,15 +68,39 @@
                                     </div>
                                 </li>
                             </a>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'tokenpage' %}">
+                                <li class="text-white pt-8">
+                                    <div class="flex items-center">
+                                        <div class="flex items-center">
+                                            <p class="text-white ml-3 text-lg md:text-2xl">Token</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                            <a href="{% url 'logout' %}">
+                                <li class="text-white pt-8">
+                                    <div class="flex items-center">
+                                        <div class="flex items-center">
+                                            <p class="text-white ml-3 text-lg md:text-2xl">Logout</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="w-full">
                         <div class="border-t border-gray-700">
                             <div class="w-full flex items-center justify-between px-6 pt-1">
                                 <div class="flex items-center">
-                                    <!-- TODO: MAKE LOGIN BUTTON HERE, MOBILE VERSION-->
-                                    <img alt="profile-pic" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" class="w-8 h-8 rounded-md" />
-                                    <p class="md:text-xl text-white text-base leading-4 ml-2">Jane Doe</p>
+                                    <div class="top-1 inline-block mr-2 mt-2">
+                                        {% if user.is_authenticated %}
+                                        <p class="md:text-xl text-white text-base leading-4 ml-2">{{request.user}}</p>
+                                        {% else %}
+                                        <a href="{% url 'login' %}"><button type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md border border-purple-500 hover:bg-gray-700">Login</button></a>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>

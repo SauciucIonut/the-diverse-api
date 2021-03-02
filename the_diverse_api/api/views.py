@@ -91,7 +91,7 @@ def home(request):
     return render(request, 'home.html')
 
 def endpoints(request):
-    return render(request, 'endpoints.html')
+    return render(request, 'endpoints.html', {'title': 'TDA Endpoints'})
 
 def documentation(request):
     return render(request, 'documentation.html')
