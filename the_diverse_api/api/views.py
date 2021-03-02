@@ -11,10 +11,13 @@ from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # API ENDPOINTS ----------------------------------------------------------------------------
 
 class CatImagesLink(generics.ListCreateAPIView):
+
     serializer_class = CatImageSerializer
     def get(self, request):
         return Response(CatImageSerializer(random.choice(list(CatImage.objects.all())), many=False).data)
@@ -30,7 +33,8 @@ class CatImagesLink(generics.ListCreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class DogImagesLink(generics.ListCreateAPIView):
-    serializer_class = CatImageSerializer
+
+    serializer_class = DogImageSerializer
     def get(self, request):
         return Response(DogImageSerializer(random.choice(list(DogImage.objects.all())), many=False).data)
 
