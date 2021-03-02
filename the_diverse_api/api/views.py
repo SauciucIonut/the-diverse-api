@@ -18,6 +18,8 @@ from rest_framework.authtoken.models import Token
 # API ENDPOINTS ----------------------------------------------------------------------------
 
 class CatImagesLink(generics.ListCreateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     serializer_class = CatImageSerializer
     def get(self, request):
@@ -34,7 +36,9 @@ class CatImagesLink(generics.ListCreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class DogImagesLink(generics.ListCreateAPIView):
-
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    
     serializer_class = DogImageSerializer
     def get(self, request):
         return Response(DogImageSerializer(random.choice(list(DogImage.objects.all())), many=False).data)
