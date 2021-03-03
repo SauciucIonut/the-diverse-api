@@ -1,0 +1,10 @@
+{% extends 'documentation.html' %}
+{% block body %}
+<h1 class="text-white text-4xl">Examples</h1><br>
+<h2 class="text-white text-2xl">Python</h2>
+<pre class="text-white">
+    import requests
+    response = requests.get("api link", headers={'Authorization': 'Token x'})
+    print(response.json())
+</pre>
+{% endblock body %}

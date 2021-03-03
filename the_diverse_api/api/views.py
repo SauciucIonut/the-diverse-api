@@ -100,6 +100,12 @@ def endpoints(request):
 def documentation(request):
     return render(request, 'documentation/welcome.html')
 
+def documentationanimals(request):
+    return render(request, 'documentation/animals.html')
+
+def documentationexamples(request):
+    return render(request, 'documentation/examples.html')
+
 def tokenpage(request):
     if not request.user.is_authenticated:
         return redirect('login')

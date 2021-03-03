@@ -10,6 +10,8 @@ urlpatterns = [
     path('', views.home, name="index"),
     path('endpoints/', views.endpoints, name="endpoints"),
     path('documentation/', views.documentation, name="documentation"),
+    path('documentation/animals', views.documentationanimals, name="documentationanimals"),
+    path('documentation/examples', views.documentationexamples, name="documentationexamples"),
 
     # page to see the token
     path('token/', views.tokenpage, name="tokenpage"),

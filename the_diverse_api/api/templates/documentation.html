@@ -34,19 +34,19 @@
                         <p class="flex w-full justify-between text-white text-xl px-2">WELCOME</p>
                         <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
                             <div class="flex items-center">
-                                <span class="text-base ml-2 px-8">Introduction</span>
+                                <a href="{% url 'documentation' %}"><span class="text-base ml-2 px-8">Introduction</span></a>
                             </div>
                         </li>
                         <p class="flex w-full justify-between text-white text-xl px-2">ENDPOINTS</p>
                         <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
                             <div class="flex items-center">
-                                <span class="text-base ml-2 px-8">Animals</span>
+                                <a href="{% url 'documentationanimals' %}"><span class="text-base ml-2 px-8">Animals</span></a>
                             </div>
                         </li>
                         <p class="flex w-full justify-between text-white text-xl px-2">EXAMPLES</p>
                         <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
                             <div class="flex items-center">
-                                <span class="text-base ml-2 px-8">Python</span>
+                                <a href="{% url 'documentationexamples' %}"><span class="text-base ml-2 px-8">Examples</span></a>
                             </div>
                         </li>
                     </ul>
@@ -75,19 +75,19 @@
                                     <p class="flex w-full justify-between text-white text-xl px-2">WELCOME</p>
                                     <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
                                         <div class="flex items-center">
-                                            <a href="{% url 'documentation' %}"<span class="text-base ml-2 px-8">Introduction</span></a>
+                                            <a href="{% url 'documentation' %}"><span class="text-base ml-2 px-8">Introduction</span></a>
                                         </div>
                                     </li>
                                     <p class="flex w-full justify-between text-white text-xl px-2">ENDPOINTS</p>
                                     <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
                                         <div class="flex items-center">
-                                            <span class="text-base ml-2 px-8">Animals</span>
+                                            <a href="{% url 'documentationanimals' %}"><span class="text-base ml-2 px-8">Animals</span></a>
                                         </div>
                                     </li>
                                     <p class="flex w-full justify-between text-white text-xl px-2">EXAMPLES</p>
                                     <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
                                         <div class="flex items-center">
-                                            <span class="text-base ml-2 px-8">Python</span>
+                                            <a href="{% url 'documentationexamples' %}"><span class="text-base ml-2 px-8">Examples</span></a>
                                         </div>
                                     </li>
                                 </ul>

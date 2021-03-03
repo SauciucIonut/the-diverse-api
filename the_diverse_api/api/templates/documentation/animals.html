@@ -1,0 +1,18 @@
+{% extends 'documentation.html' %}
+{% block body %}
+<h1 class="text-white text-4xl">Animal Endpoints</h1><br>
+<h2 class="text-white text-2xl">Endpoint Information</h2>
+<ul class="text-white">
+    <li><b>Method</b>: <code>GET</code></li>
+    <li><b>URL</b>: <code>base url + api/animals/:animal</code></li>
+    <li><b>Required parameters</b>: <code>animal - animal you want</code></li>
+    <li><b>Required headers</b>: <code>{'Authorization':'Token x'}</code> where x is your token</li>
+    <li><b>Example output</b>:
+    <code>{"id": 463,"link": "https://i.imgur.com/YLVCUS4.jpg"}</code></li>
+</ul>
+<br><h2 class="text-white text-2xl">List of valid endpoints</h2>
+<ul class="text-white">
+    <li><b>cats</b></li>
+    <li><b>dogs</b></li>
+</ul>
+{% endblock body %}
