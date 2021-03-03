@@ -15,6 +15,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from rest_framework.renderers import JSONRenderer
+from .throttles import FreeUserThrottle, PremiumUserThrottle, SubscriptionRateThrottle
 
 # API ENDPOINTS ----------------------------------------------------------------------------
 
@@ -22,6 +23,7 @@ class CatImagesLink(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
+    throttle_classes = [SubscriptionRateThrottle]
 
     serializer_class = CatImageSerializer
     def get(self, request):
@@ -41,6 +43,7 @@ class DogImagesLink(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
+    throttle_classes = [SubscriptionRateThrottle]
     
     serializer_class = DogImageSerializer
     def get(self, request):

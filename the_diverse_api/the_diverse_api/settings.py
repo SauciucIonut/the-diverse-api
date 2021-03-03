@@ -44,12 +44,23 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-    ]
+    ],
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.UserRateThrottle',
+        'api.throttles.SubscriptionRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '20/minute',
+        'subscription': '40/minute'
+    }
 }
 
 MIDDLEWARE = [
