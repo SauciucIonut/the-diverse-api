@@ -14,12 +14,14 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
+from rest_framework.renderers import JSONRenderer
 
 # API ENDPOINTS ----------------------------------------------------------------------------
 
 class CatImagesLink(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     serializer_class = CatImageSerializer
     def get(self, request):
@@ -38,6 +40,7 @@ class CatImagesLink(generics.ListCreateAPIView):
 class DogImagesLink(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
     
     serializer_class = DogImageSerializer
     def get(self, request):
