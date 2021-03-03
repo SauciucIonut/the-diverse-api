@@ -65,6 +65,7 @@ class DogImagesLink(generics.ListCreateAPIView):
 
 # USER LOGIN LOGOUT REGISTER ---------------------------------------------------------------
 
+@ratelimit(key='post:username', rate='5/m', method=['GET', 'POST'], block=True)
 def loginpage(request):
     if request.user.is_authenticated:
         return redirect('index')
