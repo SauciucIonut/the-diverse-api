@@ -11,10 +11,10 @@ def get_user_limit(user):
     # These values count first however it is nice to do it in both locations
     if user.groups.filter(name="premium").exists():
         # premium limit
-        return 40
+        return 60
     else:
         # free limit
-        return 20
+        return 30
 
 class SubscriptionRateThrottle(UserRateThrottle):
     # Define a custom scope name to be referenced by DRF in settings.py

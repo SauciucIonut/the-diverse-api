@@ -16,6 +16,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from rest_framework.renderers import JSONRenderer
 from .throttles import FreeUserThrottle, PremiumUserThrottle, SubscriptionRateThrottle
+from ratelimit.decorators import ratelimit
+from django.utils.decorators import method_decorator
 
 # API ENDPOINTS ----------------------------------------------------------------------------
 
@@ -24,8 +26,9 @@ class CatImagesLink(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
     throttle_classes = [SubscriptionRateThrottle]
-
     serializer_class = CatImageSerializer
+
+    @method_decorator(ratelimit(key='ip', rate='61/60s', method='GET', block=True))
     def get(self, request):
         return Response(CatImageSerializer(random.choice(list(CatImage.objects.all())), many=False).data)
 
@@ -44,8 +47,9 @@ class DogImagesLink(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     renderer_classes = [JSONRenderer]
     throttle_classes = [SubscriptionRateThrottle]
-    
     serializer_class = DogImageSerializer
+
+    @method_decorator(ratelimit(key='ip', rate='60/60s', method='GET', block=True))
     def get(self, request):
         return Response(DogImageSerializer(random.choice(list(DogImage.objects.all())), many=False).data)
 

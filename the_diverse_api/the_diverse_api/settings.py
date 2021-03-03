@@ -58,8 +58,8 @@ REST_FRAMEWORK = {
         'api.throttles.SubscriptionRateThrottle',
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'user': '20/minute',
-        'subscription': '40/minute'
+        'user': '60/minute',
+        'subscription': '60/minute'
     }
 }
 
