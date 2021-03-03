@@ -75,7 +75,7 @@
                                     <p class="flex w-full justify-between text-white text-xl px-2">WELCOME</p>
                                     <li class="flex w-full justify-between text-gray-300 hover:text-indigo-500 cursor-pointer items-center mb-6">
                                         <div class="flex items-center">
-                                            <span class="text-base ml-2 px-8">Introduction</span>
+                                            <a href="{% url 'documentation' %}"<span class="text-base ml-2 px-8">Introduction</span></a>
                                         </div>
                                     </li>
                                     <p class="flex w-full justify-between text-white text-xl px-2">ENDPOINTS</p>
@@ -112,13 +112,13 @@
                 <!-- Remove class [ h-64 ] when adding a card block -->
                 <div class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
                     <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
-                    <div class="w-full h-full rounded border-dashed border-2 border-gray-300">
+                    <div class="w-full h-full rounded">
                         <!-- Place your content here -->
+                        {% block body %}{% endblock %}
                     </div>
                 </div>
             </div>
         </div>
-         {% block body %}{% endblock %}
          <script>
              let sideBar = document.getElementById("mobile-nav");
             let menu = document.getElementById("menu");

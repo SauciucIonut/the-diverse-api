@@ -1,0 +1,9 @@
+{% extends 'documentation.html' %}
+{% load static %}
+{% block body %}
+<h1 class="text-white text-3xl">Introduction</h1><br>
+<p class="text-white">This documentation is meant to give information on how to use the endpoints in this API. If you require examples on how to use this API in your language, go to the Examples section. If you want to add an example in another language than those mentioned, or if you want to improve the current examples, you are free to suggest this on the discord server. This API only uses the GET method for its endpoints.</p>
+<br><h1 class="text-white text-3xl">Errors</h1><br>
+<h2 class="text-white">1. <code>"detail": "Authentication credentials were not provided."</code></h2>
+<p class="text-white">In order to use the API endpoints, you need an authorization token. In order to get a token, you need to create an account and then head over to the token page. To use the token, please include an Authorization header in your request, example: <code>{'Authorization':'Token x'}</code> where x is your own token.</p>
+{% endblock body %}

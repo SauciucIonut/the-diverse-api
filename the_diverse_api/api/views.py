@@ -98,7 +98,7 @@ def endpoints(request):
     return render(request, 'endpoints.html', {'title': 'TDA Endpoints'})
 
 def documentation(request):
-    return render(request, 'documentation.html')
+    return render(request, 'documentation/welcome.html')
 
 def tokenpage(request):
     if not request.user.is_authenticated:
