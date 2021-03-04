@@ -1,14 +1,17 @@
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <!--<script src="{% static 'api/javascript.js' %}"></script> -->
-        <link href="{% static 'api/tailwind.css' %}" rel="stylesheet">
+        <!--<link href="{% static 'api/tailwind.css' %}" rel="stylesheet">-->
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
         <link rel="shortcut icon" type="image/png" href="{% static 'api/favicon.ico' %}"/>
         <meta name="description" content="The Diverse API is a REST API written in Python using Django with many fun features." />
         <meta name="keywords" content="API,Discord,Diverse,Animals,Images,REST API,Fun,Free,Premium" />
+        <meta name="author" content="Ionut Sauciuc" />
         <meta name="theme-color" content="#312E81">
         <meta property="og:title" content="The Diverse API" />
         <meta property="og:description" content="The Diverse API is a REST API written in Python using Django with many fun features." />
@@ -16,6 +19,13 @@
         <meta property="og:image" content="{% static 'api/favicon.ico' %}" />
         <meta property="og:image:width" content="64" />
         <meta property="og:image:height" content="64" />
+        
+        <style>
+        .gradient {
+            background: rgb(0,0,21);
+            background: linear-gradient(90deg, rgba(0,0,21,1) 0%, rgba(31,41,55,1) 35%, rgba(4,4,150,1) 100%);
+        }
+        </style>
 
         {% if title %}
         <title>{{ title }}</title>
@@ -24,182 +34,162 @@
         {% endif %}
         {% block head %}{% endblock %}
     </head>
-    <body class="bg-gray-800">
-        <!-- Front-end made with Tailwind CSS-->
-        <!-- I am in no way a front-end developer so I just copied this navbar from here: https://app.tailwinduikit.com/listing/webapp/master_layout/boxed_layout-->
-        <!-- Navigation starts -->
-        <!-- Mobile -->
-        <div id="mobile-nav" class="w-full h-full absolute z-40 select-none">
-            <div class="bg-gray-800 opacity-50 inset-0 fixed w-full h-full" onclick="sidebarHandler(false)"></div>
-            <div class="md:w-96 w-64 z-20 absolute left-0 z-40 top-0 bg-gray-800 shadow flex-col justify-between transition duration-150 ease-in-out h-full">
-                <div class="flex flex-col justify-between h-full">
-                    <div class="px-6 pt-4">
-                        <div class="flex items-center justify-end">
-                        </div>
-                        <ul class="f-m-m">
-                            <a href="{% url 'index' %}">
-                                <li class="text-white pt-8">
-                                    <div class="flex items-center">
-                                        <p class="text-indigo-500 ml-3 text-lg md:text-2xl">Home</p>
-                                    </div>
-                                </li>
-                            </a>
-                            <a href="{% url 'documentation' %}">
-                                <li class="text-white pt-8">
-                                    <div class="flex items-center">
-                                        <div class="flex items-center">
-                                            <p class="text-white ml-3 text-lg md:text-2xl">Documentation</p>
-                                        </div>
-                                </li>
-                            </a>
-                            <a href="{% url 'endpoints' %}">
-                                <li class="text-white pt-8">
-                                    <div class="flex items-center">
-                                        <p class="text-white ml-3 text-lg md:text-2xl">Endpoints</p>
-                                    </div>
-                                </li>
-                            </a>
-                            <a href="https://discord.gg/f3MtWDHe2P">
-                                <li class="text-white pt-8">
-                                    <div class="flex items-center">
-                                        <div class="flex items-center">
-                                            <p class="text-white ml-3 text-lg md:text-2xl">Discord</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </a>
-                            {% if user.is_authenticated %}
-                            <a href="{% url 'tokenpage' %}">
-                                <li class="text-white pt-8">
-                                    <div class="flex items-center">
-                                        <div class="flex items-center">
-                                            <p class="text-white ml-3 text-lg md:text-2xl">Token</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </a>
-                            <a href="{% url 'logout' %}">
-                                <li class="text-white pt-8">
-                                    <div class="flex items-center">
-                                        <div class="flex items-center">
-                                            <p class="text-white ml-3 text-lg md:text-2xl">Logout</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </a>
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="w-full">
-                        <div class="border-t border-gray-700">
-                            <div class="w-full flex items-center justify-between px-6 pt-1">
-                                <div class="flex items-center">
-                                    <div class="top-1 inline-block mr-2 mt-2">
-                                        {% if user.is_authenticated %}
-                                        <p class="md:text-xl text-white text-base leading-4 ml-2">{{request.user}}</p>
-                                        {% else %}
-                                        <a href="{% url 'login' %}"><button type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md border border-purple-500 hover:bg-gray-700">Login</button></a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+        <!--Nav-->
+        <nav id="header" class="fixed w-full z-30 top-0 text-white">
+          <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+            <div class="pl-4 flex items-center">
+              <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">THE DIVERSE API</a>
             </div>
-        </div>
-        <!-- Desktop -->
-        <nav class="w-full mx-auto bg-gray-800 border-b border-gray-700 shadow relative z-20 select-none">
-            <div class="container px-6 h-16 flex items-center justify-between mx-auto">
-                <div class="flex items-center">
-                </div>
-                <ul class="flex items-center justify-center h-full">
-                    <a href="{% url 'index' %}"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white ml-0 xl:ml-10 tracking-normal hidden">Home</li></a>
-                    <a href="{% url 'documentation' %}"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white ml-0 xl:ml-10 tracking-normal hidden">Documentation</li></a>
-                    <a href="{% url 'index' %}"><li class="mx-0 xl:mx-12 cursor-pointer">
-                        <svg aria-label="Home" id="logo" enable-background="new 0 0 300 300" height="0" viewBox="0 0 300 300" width="43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <img src="{% static 'api/logo.png' %}" alt="logo" width="43">
-                        </svg>
-                    </li></a>
-                    <a href="{% url 'endpoints' %}"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white mr-10 tracking-normal hidden">Endpoints</li></a>
-                    <a href="https://discord.gg/f3MtWDHe2P"><li class="hover:text-indigo-500 cursor-pointer h-full xl:flex items-center text-sm text-white tracking-normal hidden">Discord</li></a>
-                </ul>
-                <div aria-haspopup="true" class="cursor-pointer h-full xl:flex items-center justify-end hidden relative" onclick="dropdownHandler(this)">
-                    <div class="rounded">
-                        <!-- TODO: MAKE LOGIN BUTTON HERE-->
-                        {% if user.is_authenticated %}
-                        <div class="absolute top-3 inline-block text-left">
-                            <div>
-                                <p class="inline-flex justify-center w-full shadow-sm px-4 py-2 text-sm font-medium text-white hover:text-indigo" id="options-menu" aria-haspopup="true" aria-expanded="true" onclick="userDropdownHandler(this)">{{request.user}}
-                                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </p>
-                            </div>
-                            <div class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" id="usernamedropdown">
-                                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                                  <a href="{% url 'tokenpage' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Token</a>
-                                  <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Logout</a>
-                                </div>
-                              </div>
-                        </div>
-                        {% else %}
-                         <div class="absolute top-1 inline-block mr-2 mt-2">
-                            <a href="{% url 'login' %}"><button type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md border border-purple-500 hover:bg-gray-700">Login</button>
-                         </div></a>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="visible xl:hidden flex items-center">
-                    <div id="menu" class="text-white" onclick="sidebarHandler(true)">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <line x1="4" y1="6" x2="20" y2="6" />
-                            <line x1="4" y1="12" x2="20" y2="12" />
-                            <line x1="4" y1="18" x2="20" y2="18" />
-                        </svg>
-                    </div>
-                </div>
+            <div class="block lg:hidden pr-4">
+              <button id="nav-toggle" class="flex items-center p-1 text-white hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <title>Menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+              </button>
             </div>
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+              <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                <li class="mr-3">
+                  <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#endpoints">Endpoints</a>
+                </li>
+                <li class="mr-3">
+                  <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#pricing">Pricing</a>
+                </li>
+                <li class="mr-3">
+                  <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Documentation</a>
+                </li>
+                <li class="mr-3">
+                  <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Token</a>
+                </li>
+              </ul>
+              <button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Login</button>
             </div>
+          </div>
+          <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
         </nav>
-
-        <!-- Navigation ends -->
         {% block body %}{% endblock %}
-
-        <!-- tailblocks.cc -->
-        <footer class="text-gray-600 body-font select-none">
-            <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-                <p class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                    <img src="{% static 'api/logo.png' %}" alt="logo" width="43">
-                <span class="ml-3 text-xl text-white">The Diverse API</span></p>
-                <p class="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2021 The Diverse API</p>
+        <!--Footer-->
+        <footer class="bg-white">
+          <div class="container mx-auto px-8">
+            <div class="w-full flex flex-col md:flex-row py-6">
+              <div class="flex-1 mb-6 text-black">
+                <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                  <img src="{% static 'api/logo.png' %}" class="plane-take-off">
+                </a>
+              </div>
+              <div class="flex-1">
+                <p class="uppercase text-gray-500 md:mb-6">Links</p>
+                <ul class="list-reset mb-6">
+                  <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                    <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Buy Me A Coffee</a>
+                  </li>
+                  <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                    <a href="#endpoints" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Endpoints</a>
+                  </li>
+                  <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                    <a href="#pricing" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Pricing</a>
+                  </li>
+                  <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                    <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Documentation</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex-1">
+                <p class="uppercase text-gray-500 md:mb-6">Social</p>
+                <ul class="list-reset mb-6">
+                  <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                    <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Discord</a>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
         </footer>
-        
+        <!-- jQuery if you need it
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      -->
         <script>
-            function dropdownHandler(element) {
-                let single = element.getElementsByTagName("ul")[0];
-                single.classList.toggle("hidden");
+          var scrollpos = window.scrollY;
+          var header = document.getElementById("header");
+          var navcontent = document.getElementById("nav-content");
+          var navaction = document.getElementById("navAction");
+          var brandname = document.getElementById("brandname");
+          var toToggle = document.querySelectorAll(".toggleColour");
+    
+          document.addEventListener("scroll", function () {
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+    
+            if (scrollpos > 10) {
+              header.classList.add("bg-white");
+              navaction.classList.remove("bg-white");
+              navaction.classList.add("gradient");
+              navaction.classList.remove("text-gray-800");
+              navaction.classList.add("text-white");
+              //Use to switch toggleColour colours
+              for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-gray-800");
+                toToggle[i].classList.remove("text-white");
+              }
+              header.classList.add("shadow");
+              navcontent.classList.remove("bg-gray-100");
+              navcontent.classList.add("bg-white");
+            } else {
+              header.classList.remove("bg-white");
+              navaction.classList.remove("gradient");
+              navaction.classList.add("bg-white");
+              navaction.classList.remove("text-white");
+              navaction.classList.add("text-gray-800");
+              //Use to switch toggleColour colours
+              for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-white");
+                toToggle[i].classList.remove("text-gray-800");
+              }
+    
+              header.classList.remove("shadow");
+              navcontent.classList.remove("bg-white");
+              navcontent.classList.add("bg-gray-100");
             }
-
-            function userDropdownHandler(element) {
-                let dropdownuser = document.getElementById('usernamedropdown')
-                dropdownuser.classList.toggle("hidden");
-            }
-            let sideBar = document.getElementById("mobile-nav");
-            let menu = document.getElementById("menu");
-            let cross = document.getElementById("cross");
-            sideBar.style.transform = "translateX(-100%)";
-            const sidebarHandler = (check) => {
-                if (check) {
-                    sideBar.style.transform = "translateX(0px)";
-                    menu.classList.add("hidden");
+          });
+        </script>
+        <script>
+          /*Toggle dropdown list*/
+          /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+    
+          var navMenuDiv = document.getElementById("nav-content");
+          var navMenu = document.getElementById("nav-toggle");
+    
+          document.onclick = check;
+          function check(e) {
+            var target = (e && e.target) || (event && event.srcElement);
+    
+            //Nav Menu
+            if (!checkParent(target, navMenuDiv)) {
+              // click NOT on the menu
+              if (checkParent(target, navMenu)) {
+                // click on the link
+                if (navMenuDiv.classList.contains("hidden")) {
+                  navMenuDiv.classList.remove("hidden");
                 } else {
-                    sideBar.style.transform = "translateX(-100%)";
-                    menu.classList.remove("hidden");
+                  navMenuDiv.classList.add("hidden");
                 }
-            };
+              } else {
+                // click both outside link and outside menu, hide menu
+                navMenuDiv.classList.add("hidden");
+              }
+            }
+          }
+          function checkParent(t, elm) {
+            while (t.parentNode) {
+              if (t == elm) {
+                return true;
+              }
+              t = t.parentNode;
+            }
+            return false;
+          }
         </script>
     </body>
 </html>
