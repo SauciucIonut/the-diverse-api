@@ -1,64 +1,77 @@
 {% load static %}
 <!doctype html>
 <html>
-    <head>
-        <link href="{% static 'api/tailwind.css' %}" rel="stylesheet">
-        <link rel="shortcut icon" type="image/png" href="{% static 'api/favicon.ico' %}"/>
-        <meta name="description" content="The Diverse API is a REST API written in Python using Django with many fun features. This is its documentation." />
-        <meta name="keywords" content="API,Discord,Diverse,Animals,Images,REST API,Fun,Free,Premium" />
-        <meta name="theme-color" content="#312E81">
-        <meta property="og:title" content="The Diverse API" />
-        <meta property="og:description" content="The Diverse API is a REST API written in Python using Django with many fun features." />
-        <meta property="og:image" content="{% static 'api/favicon.ico' %}" />
-        <meta property="og:image:width" content="64" />
-        <meta property="og:image:height" content="64" />
-        <title>TDA Login</title>
-    </head>
-    <body class="bg-gray-800 h-full">
-        <section>
-            <div class="mx-auto flex justify-center lg:items-center h-full">
-                <form method="POST" id="login" class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
-                    {% csrf_token %}
-                    <div class="pt-0 px-2 flex flex-col items-center justify-center">
-                        <img src="{% static 'api/logo.png' %}" alt="logo">
-                        <h2 class="text-4xl leading-tight pt-8">The Diverse API</h2>
+
+<head>
+    <link href="{% static 'api/tailwind.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'api/favicon.ico' %}" />
+    <meta name="description"
+        content="The Diverse API is a REST API written in Python using Django with many fun features. This is its documentation." />
+    <meta name="keywords" content="API,Discord,Diverse,Animals,Images,REST API,Fun,Free,Premium" />
+    <meta name="theme-color" content="#312E81">
+    <meta property="og:title" content="The Diverse API" />
+    <meta property="og:description"
+        content="The Diverse API is a REST API written in Python using Django with many fun features." />
+    <meta property="og:image" content="{% static 'api/favicon.ico' %}" />
+    <meta property="og:image:width" content="64" />
+    <meta property="og:image:height" content="64" />
+    <title>TDA Login</title>
+</head>
+
+<body class="bg-gray-800 h-full">
+    <section>
+        <div class="mx-auto flex justify-center lg:items-center h-full">
+            <form method="POST" id="login"
+                class="w-full sm:w-4/6 md:w-3/6 lg:w-4/12 xl:w-3/12 text-white py-12 px-2 sm:px-0">
+                {% csrf_token %}
+                <div class="pt-0 px-2 flex flex-col items-center justify-center">
+                    <a href="{% url 'index' %}"><img src="{% static 'api/logo.png' %}" alt="logo"></a>
+                    <h2 class="text-4xl leading-tight pt-8">The Diverse API</h2>
+                </div>
+                <div class="pt-16 px-2 flex flex-col items-center justify-center">
+                    <h3 class="text-2xl sm:text-3xl xl:text-2xl font-bold leading-tight">Login To Your Account</h3>
+                </div>
+                <div class="mt-12 w-full px-2 sm:px-6">
+                    <div class="flex flex-col mt-5">
+                        <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">Username</label>
+                        <input type="text"
+                            class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow"
+                            name="username">
                     </div>
-                    <div class="pt-16 px-2 flex flex-col items-center justify-center">
-                        <h3 class="text-2xl sm:text-3xl xl:text-2xl font-bold leading-tight">Login To Your Account</h3>
+                    <div class="flex flex-col mt-5">
+                        <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">Password?</label>
+                        <input type="password"
+                            class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow"
+                            name="password">
                     </div>
-                    <div class="mt-12 w-full px-2 sm:px-6">
-                        <div class="flex flex-col mt-5">
-                            <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">Username</label>
-                            <input type="text" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="username">
+                </div>
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <br>
+                <div class="bg-white rounded-lg border-gray-300 border p-3 shadow-lg px-2 sm:px-6">
+                    <div class="flex flex-row">
+                        <div class="px-2">
+                            <svg width="24" height="24" viewBox="0 0 1792 1792" fill="#44C997"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1299 813l-422 422q-19 19-45 19t-45-19l-294-294q-19-19-19-45t19-45l102-102q19-19 45-19t45 19l147 147 275-275q19-19 45-19t45 19l102 102q19 19 19 45t-19 45zm141 83q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" />
+                            </svg>
                         </div>
-                        <div class="flex flex-col mt-5">
-                            <label class="text-lg font-semibold leading-tight" for="id_{{ field.name }}">Password?</label>
-                            <input type="password" class="form-control h-10 px-2 w-full text-white bg-gray-900 rounded mt-2 focus:outline-none shadow" name="password">
+                        <div class="ml-2 mr-6">
+                            <span class="font-semibold text-black">Success!</span>
+                            <span class="block text-gray-500">{{message}}</span>
                         </div>
                     </div>
-                    {% for message in messages %}
-                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                        <br><div class="bg-white rounded-lg border-gray-300 border p-3 shadow-lg px-2 sm:px-6">
-                            <div class="flex flex-row">
-                            <div class="px-2">
-                                <svg width="24" height="24" viewBox="0 0 1792 1792" fill="#44C997" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1299 813l-422 422q-19 19-45 19t-45-19l-294-294q-19-19-19-45t19-45l102-102q19-19 45-19t45 19l147 147 275-275q19-19 45-19t45 19l102 102q19 19 19 45t-19 45zm141 83q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/>
-                                </svg>
-                            </div>
-                            <div class="ml-2 mr-6">
-                                <span class="font-semibold text-black">Success!</span>
-                                <span class="block text-gray-500">{{message}}</span>
-                            </div>
-                            </div>
-                        </div>
-                    {% else %}
-                    <br><div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                        <strong class="font-bold">Error!</strong>
-                        <span class="block sm:inline">{{message}}</span>
-                      </div>
-                    {% endif %}
-                    {% endfor %}
-                    <!-- to add if needed
+                </div>
+                {% else %}
+                <br>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Error!</strong>
+                    <span class="block sm:inline">{{message}}</span>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <!-- to add if needed
                     <div class="pt-6 w-full flex justify-between px-2 sm:px-6">
                         <div class="flex items-center">
                             <input id="rememberme" class="w-3 h-3 mr-2" type="checkbox" />
@@ -67,12 +80,15 @@
                         <a class="text-xs" href="javascript: void(0)">Forgot Password?</a>
                     </div>
                     -->
-                    <div class="px-2 sm:px-6">
-                        <button class="focus:outline-none w-full bg-white transition duration-150 ease-in-out hover:bg-gray-200 rounded text-indigo-600 px-8 py-3 text-sm mt-6">Login</button>
-                        <p class="mt-16 text-xs text-center">Don’t have an account? <a class="underline" href="{% url 'register' %}">Sign Up</a></p>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </body>
+                <div class="px-2 sm:px-6">
+                    <button
+                        class="focus:outline-none w-full bg-white transition duration-150 ease-in-out hover:bg-gray-200 rounded text-indigo-600 px-8 py-3 text-sm mt-6">Login</button>
+                    <p class="mt-16 text-xs text-center">Don’t have an account? <a class="underline"
+                            href="{% url 'register' %}">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
 </html>
