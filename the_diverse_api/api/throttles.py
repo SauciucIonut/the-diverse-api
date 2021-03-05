@@ -1,10 +1,13 @@
 from rest_framework.throttling import UserRateThrottle
 
+
 class FreeUserThrottle(UserRateThrottle):
-    scope = 'free'
+    scope = "free"
+
 
 class PremiumUserThrottle(UserRateThrottle):
-    scope = 'premium'
+    scope = "premium"
+
 
 def get_user_limit(user):
     # When updating these values, please update DEFAULT_THROTTLE_RATES too.
@@ -15,6 +18,7 @@ def get_user_limit(user):
     else:
         # free limit
         return 30
+
 
 class SubscriptionRateThrottle(UserRateThrottle):
     # Define a custom scope name to be referenced by DRF in settings.py
