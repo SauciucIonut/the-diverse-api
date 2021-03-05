@@ -7,7 +7,6 @@ urlpatterns = [
     path("api/animals/dogs/", views.DogImagesLink.as_view(), name="api-animals-dogs"),
     # front-end
     path("", views.home, name="index"),
-    path("endpoints/", views.endpoints, name="endpoints"),
     path("documentation/", views.documentation, name="documentation"),
     path(
         "documentation/animals", views.documentationanimals, name="documentationanimals"

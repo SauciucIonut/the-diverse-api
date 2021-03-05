@@ -81,7 +81,7 @@ class DogImagesLink(generics.ListCreateAPIView):
 # USER LOGIN LOGOUT REGISTER ---------------------------------------------------------------
 
 
-@ratelimit(key="post:username", rate="5/m", method=["GET", "POST"], block=True)
+@ratelimit(key="ip", rate="5/m", method=["GET", "POST"], block=True)
 def loginpage(request):
     if request.user.is_authenticated:
         return redirect("index")
@@ -104,6 +104,7 @@ def logoutUser(request):
     return redirect("login")
 
 
+@ratelimit(key="ip", rate="5/m", method=["GET", "POST"], block=True)
 def register(request):
     form = CreateUserForm()
     if request.user.is_authenticated:
@@ -124,10 +125,6 @@ def register(request):
 
 def home(request):
     return render(request, "home.html")
-
-
-def endpoints(request):
-    return render(request, "endpoints.html", {"title": "TDA Endpoints"})
 
 
 def documentation(request):
